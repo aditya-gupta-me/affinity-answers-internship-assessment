@@ -89,6 +89,22 @@ A pagination query to list RNA families with DNA sequences longer than 1,000,000
 - Fields: family accession ID, family name, max length
 - Pagination: Page 9, 15 results/page (OFFSET 120, LIMIT 15)
 
+```sql
+SELECT
+    f.rfam_acc,
+    f.rfam_id AS family_name,
+    MAX(rf.length) AS max_length
+FROM family f
+JOIN full_region fr ON f.rfam_acc = fr.rfam_acc
+JOIN rfamseq rf ON fr.rfamseq_acc = rf.rfamseq_acc
+GROUP BY f.rfam_acc, f.rfam_id
+HAVING MAX(rf.length) > 1000000
+ORDER BY max_length DESC
+LIMIT 15 OFFSET 120;
+```
+
+> **NOTE:** As the DB server is big and complex structure the query could able to execute due to Rfam being public database server. But the query is logically perfect.
+
 ## Setup
 
 ### Prerequisites
