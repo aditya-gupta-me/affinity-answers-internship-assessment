@@ -78,7 +78,7 @@ The query joins taxonomy and rfamseq tables to find the Oryza (rice) species wit
 
 ![Rice Query Result](examples/result_c.png)
 
-### d) Pagination Query (In Progress)
+### d) Pagination Query
 
 A pagination query to list RNA families with DNA sequences longer than 1,000,000 base pairs, returning the 9th page with 15 results per page.
 
